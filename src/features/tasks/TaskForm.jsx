@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTask } from './taskSlice';
+import { createTask } from './taskSlice';
 
 export default function TaskForm() {
   const [text, setText] = useState('');
@@ -27,10 +27,9 @@ export default function TaskForm() {
 
     const smartPriority = getPriority(text);
 
-    dispatch(addTask({
-      id: Date.now(),
+    dispatch(createTask({
       text,
-      priority: priority || smartPriority
+      priority
     }));
 
     setText('');
